@@ -14,7 +14,6 @@ class Session
 
     public function __construct()
     {
-        $_SESSION = null;
         $this->appName = md5(CONF_APP_NAME);
 
         if (!isset($_SESSION[$this->appName])) {
