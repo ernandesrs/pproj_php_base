@@ -51,7 +51,6 @@ foreach ($resources as $source => $public) {
                         if (!isset($cache[$stylePath])) {
                             $move = true;
                         } else {
-                            echo $cache[$stylePath] . " - " . $fileSize . "<br>";
                             if ($cache[$stylePath] !== $fileSize) {
                                 $move = true;
                             } else {
