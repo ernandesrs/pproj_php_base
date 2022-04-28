@@ -18,7 +18,7 @@ class Controller
 
     public function __construct(Router $router)
     {
-        $this->template = (new Template(CONF_BASE_PATH . "/resources/views"));
+        $this->template = (new Template(CONF_BASE_PATH . DIRECTORY_SEPARATOR . CONF_VIEWS_DIR));
         $this->router = $router;
         $this->seo = new Seo();
 
