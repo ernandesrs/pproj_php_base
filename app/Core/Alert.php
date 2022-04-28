@@ -156,6 +156,9 @@ class Alert
         $alert = "
             <div class='alert alert-{$this->style} alert-dismissible alert-{$this->type}'{$time}>
                 {$alertHeading}
+                <button type='button' class='close' data-dismiss='alert'>
+                    <span>&times;</span>
+                </button>
                 <div class='alert-body'>{$this->message}</div>
             </div>
         ";
