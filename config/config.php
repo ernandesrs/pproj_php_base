@@ -27,3 +27,5 @@ define("CONF_BASE_PATH", __DIR__ . "/..");
 define("CONF_APP_NAME", $env["APP_NAME"]);
 define("CONF_APP_URL", $env["APP_URL"]);
 define("CONF_APP_LOCAL", $env["APP_LOCAL"]);
+
+define("CONF_UPLOADS_DIR", $env["APP_UPLOADS_DIR"]);
