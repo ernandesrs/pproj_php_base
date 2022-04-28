@@ -29,6 +29,8 @@ $scripts = [
 ];
 
 $resources = $styles + $scripts;
+$move = false;
+$cache = (array) json_decode(file_get_contents(__DIR__ . "/cache.json"));
 
 foreach ($resources as $source => $public) {
     $stylePath = CONF_BASE_PATH . "/{$source}";
@@ -41,9 +43,37 @@ foreach ($resources as $source => $public) {
                 if (!isset(pathinfo($path)["extension"])) {
                     mkdir($path);
                 } else {
-                    copy(CONF_BASE_PATH . "/{$source}", CONF_BASE_PATH . "/{$public}");
+                    if (file_exists(CONF_BASE_PATH . "/{$public}")) {
+                        $fileSize = filesize($stylePath);
+                        /**
+                         * Verificação simples se houve ou não alteração no arquivo
+                         */
+                        if (!isset($cache[$stylePath])) {
+                            $move = true;
+                        } else {
+                            echo $cache[$stylePath] . " - " . $fileSize . "<br>";
+                            if ($cache[$stylePath] !== $fileSize) {
+                                $move = true;
+                            } else {
+                                $move = false;
+                            }
+                        }
+
+                        $cache[$stylePath] = $fileSize;
+                    } else {
+                        $move = true;
+                    }
                 }
             }
         }
     }
+
+    if ($move) {
+        copy(CONF_BASE_PATH . "/{$source}", CONF_BASE_PATH . "/{$public}");
+    }
 }
+
+$cacheFile = fopen(__DIR__ . "/cache.json", "w");
+fwrite($cacheFile, json_encode($cache));
+fflush($cacheFile);
+fclose($cacheFile);
