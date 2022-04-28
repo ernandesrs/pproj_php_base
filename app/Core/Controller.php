@@ -21,5 +21,7 @@ class Controller
         $this->template = (new Template(CONF_BASE_PATH . "/resources/views"));
         $this->router = $router;
         $this->seo = new Seo();
+
+        $this->template->addData(["router" => $this->router]);
     }
 }
