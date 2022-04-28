@@ -3,16 +3,20 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\AdminController;
+use CoffeeCode\Router\Router;
 
 class IndexController extends AdminController
 {
-    public function __construct()
+    public function __construct(Router $router)
     {
-        parent::__construct();
+        parent::__construct($router);
     }
-    
+
     public function index()
     {
-        require_once CONF_BASE_PATH . "/resources/views/admin/index.php";
+        echo $this->template->render("admin/admin.index", [
+            "title" => "Painel Administrativo"
+        ]);
+        return;
     }
 }

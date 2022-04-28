@@ -2,17 +2,21 @@
 
 namespace App\Controllers\Front;
 
-use App\Controllers\Controller;
+use App\Controllers\FrontController;
+use CoffeeCode\Router\Router;
 
-class IndexController extends Controller
+class IndexController extends FrontController
 {
-    public function __construct()
+    public function __construct(Router $router)
     {
-        parent::__construct();
+        parent::__construct($router);
     }
 
     public function index()
     {
-        require_once CONF_BASE_PATH . "/resources/views/front/index.php";
+        echo $this->template->render("front/front.index", [
+            "title" => "Página Inicial"
+        ]);
+        return;
     }
 }
