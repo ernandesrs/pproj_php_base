@@ -12,9 +12,17 @@ class IndexController extends FrontController
         parent::__construct($router);
     }
 
-    public function index()
+    /**
+     * @return void
+     */
+    public function index(): void
     {
         echo $this->template->render("front/front.index", [
+            "head"=>$this->seo->render(
+                "Página inicial",
+                "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat placeat error dolor sapiente minus sed!",
+                $this->router->route("front.index")
+            ),
             "title" => "Página Inicial"
         ]);
         return;
