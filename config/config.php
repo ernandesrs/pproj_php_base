@@ -2,6 +2,9 @@
 
 $env = parse_ini_file(__DIR__ . "/../.env");
 
+session_start();
+date_default_timezone_set($env["APP_TIMEZONE"]);
+
 /**
  * Data Layout PHP Componnet Setting
  */
