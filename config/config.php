@@ -28,5 +28,6 @@ define("CONF_APP_NAME", $env["APP_NAME"]);
 define("CONF_APP_URL", $env["APP_URL"]);
 define("CONF_APP_LOCAL", $env["APP_LOCAL"]);
 
-define("CONF_VIEWS_DIR", $env["APP_VIEWS_DIR"]);
-define("CONF_UPLOADS_DIR", $env["APP_UPLOADS_DIR"]);
+define("CONF_VIEWS_DIR", "/resources/views");
+define("CONF_UPLOADS_DIR", "/storage/uploads");
+define("CONF_CACHE_DIR", "/storage/cache");
