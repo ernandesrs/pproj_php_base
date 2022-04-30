@@ -1,5 +1,6 @@
 node_modules/
 *.map
+storage/cache/*
 vendor/
 .env
 composer.lock
