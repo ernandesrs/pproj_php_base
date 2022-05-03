@@ -18,7 +18,7 @@ class IndexController extends FrontController
     public function index(): void
     {
         echo $this->template->render("front/front.index", [
-            "head"=>$this->seo->render(
+            "head" => $this->seo->render(
                 "Página inicial",
                 "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat placeat error dolor sapiente minus sed!",
                 $this->router->route("front.index")
