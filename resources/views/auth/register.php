@@ -55,7 +55,7 @@
                 <div class="col-12 col-md-6">
                     <div class="form-group">
                         <label for="password_confirm">Confirmar senha:</label>
-                        <input class="form-control" type="password" name="password_confirm">
+                        <input class="form-control" type="password" name="password_confirm" autocomplete="new-password">
                     </div>
                 </div>
             </div>

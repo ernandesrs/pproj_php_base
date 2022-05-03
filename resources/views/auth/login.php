@@ -13,7 +13,7 @@
 
             <div class="form-group">
                 <label for="password">Senha:</label>
-                <input class="form-control" type="password" name="password">
+                <input class="form-control" type="password" name="password" autocomplete="new-password">
             </div>
 
             <div class="py-2 text-center">

@@ -22,7 +22,7 @@ class User extends Model
         $this->username = $validated["username"];
         $this->email = $validated["email"];
         $this->password = password_hash($validated["password"], PASSWORD_DEFAULT);
-        $this->level = $validated["level"];
+        $this->level = $validated["level"] ?? 1;
         return $this;
     }
 }
