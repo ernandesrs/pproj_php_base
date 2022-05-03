@@ -11,6 +11,12 @@ $router->namespace("\\App\\Controllers\\Front");
 $router->group("/");
 $router->get("/", "IndexController@index", "front.index");
 
+// auth
+$router->get("/login", "AuthController@login", "auth.login");
+$router->post("/authenticate", "AuthController@authenticate", "auth.authenticate");
+$router->get("/register", "AuthController@register", "auth.register");
+$router->post("/create", "AuthController@create", "auth.create");
+
 /**
  * ADMIN CONTROLLERS
  */

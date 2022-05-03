@@ -1,0 +1,44 @@
+@import "./../../../node_modules/bootstrap/scss/bootstrap";
+
+@import "./variables";
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    min-height: 100vh;
+    background-color: $light;
+
+    .auth-box {
+        width: 100%;
+        padding: 24px;
+
+        .auth-box-header {
+            padding: 12px 0;
+            border-bottom: 1px solid $secondary;
+
+            .title {
+                font-size: 1.6rem;
+                text-align: center;
+            }
+        }
+
+        .auth-box-body {
+            background-color: transparent;
+            padding: 12px 0;
+
+            input {
+                text-align: center;
+            }
+        }
+
+        &.login {
+            max-width: 375px;
+        }
+
+        &.register {
+            max-width: 475px;
+        }
+    }
+}

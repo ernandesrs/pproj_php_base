@@ -14,6 +14,7 @@ if (!CONF_APP_LOCAL) return;
  */
 $styles = [
     "resources/css/front/custom.css" => "public/css/front/custom.css",
+    "resources/css/auth/custom.css" => "public/css/auth/custom.css",
     "resources/css/admin/custom.css" => "public/css/admin/custom.css",
     "node_modules/bootstrap-icons/font/bootstrap-icons.css" => "public/css/bootstrap-icons.css",
 ];
@@ -23,6 +24,7 @@ $styles = [
  */
 $scripts = [
     "resources/js/front/scripts.js" => "public/js/front/scripts.js",
+    "resources/js/auth/scripts.js" => "public/js/auth/scripts.js",
     "resources/js/admin/scripts.js" => "public/js/admin/scripts.js",
     "node_modules/jquery/dist/jquery.js" => "public/js/jquery.js",
     "node_modules/bootstrap/dist/js/bootstrap.js" => "public/js/bootstrap.js",
