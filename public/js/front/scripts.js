@@ -1,1 +1,5 @@
-console.log("Não kkkkkk");
+$(".jsMessageArea").errorMessage({
+    "title": "Título",
+    "message": "OPUts",
+    "type": "floating"
+});

@@ -62,7 +62,7 @@
             <div class="alert-body"></div>
         <div>`);
 
-        timer = message.type == "floating" ? message.time * 1000 : 0;
+        timer = message.type == "floating" ? (message.time ? message.time * 1000 : 7500) : 0;
         alertModel.addClass(message.style);
 
         alertModel.addClass(`alert-${message.type}`);
