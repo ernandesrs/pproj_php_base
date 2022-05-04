@@ -18,7 +18,7 @@
     <header class="bg-light header">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="<?= $router->route("front.index") ?>" title="<?= CONF_APP_NAME ?> Início">
                     <?= CONF_APP_NAME ?>
                 </a>
 
@@ -29,7 +29,7 @@
                 <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $router->route("front.index") ?>">
+                            <a class="nav-link" href="<?= $router->route("front.index") ?>" title="<?= CONF_APP_NAME ?> Início">
                                 Início
                             </a>
                         </li>
