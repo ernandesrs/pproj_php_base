@@ -20,7 +20,7 @@
                 input.addClass("is-invalid");
                 input.parent().css("position", "relative").append(`
                     <div id="${name}-feedback" class="${tooltip ? "invalid-tooltip" : "invalid-feedback"}">
-                        ${errors[name][0]}
+                        ${errors[name]}
                     </div>
                 `);
             } else {

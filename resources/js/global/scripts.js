@@ -32,7 +32,11 @@ $(function () {
             if (response.message)
                 messageArea.addMessage(response.message);
 
-            form.removeErrors();
+            if (response.success) {
+                form.removeErrors();
+            } else if (response.errors) {
+                form.addErrors(response.errors);
+            }
         }, function (xhr) { // complete
             button.removeLoading();
             form.removeBackdrop();

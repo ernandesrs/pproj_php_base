@@ -43,4 +43,35 @@ class TestController extends FrontController
         Alert::info("Mensagem flutuante de teste na sessão")->floating()->session();
         redirect($this->router->route("front.test"));
     }
+
+    /**
+     * POST
+     */
+    public function indexPost()
+    {
+        if ($test = filter_input(INPUT_GET, "test")) {
+            if (method_exists($this, $test))
+                $this->$test();
+            else {
+                Alert::warning("Ops. Método não encontrado.")->session();
+                redirect($this->router->route("front.test"));
+            }
+
+            return;
+        }
+    }
+
+    public function form_errors()
+    {
+        sleep(5);
+        echo json_encode([
+            "success" => false,
+            "message" => Alert::error("Erro ao validar dados")->get(),
+            "errors" => [
+                "name" => "Informe o nome",
+                "username" => "Informe o usuário",
+            ],
+        ]);
+        return;
+    }
 }

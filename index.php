@@ -12,6 +12,7 @@ $router->group("/");
 $router->get("/", "IndexController@index", "front.index");
 $router->get("/sobre", "IndexController@about", "front.about");
 $router->get("/teste", "TestController@index", "front.test");
+$router->post("/teste_post", "TestController@indexPost", "front.testPost");
 
 // auth
 $router->get("/login", "AuthController@login", "auth.login");
