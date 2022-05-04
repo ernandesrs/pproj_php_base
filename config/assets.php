@@ -78,7 +78,7 @@ foreach ($resources as $source => $public) {
         }
     }
 
-    if ($move) {
+    if ($move && file_exists(CONF_BASE_PATH . "/{$source}")) {
         copy(CONF_BASE_PATH . "/{$source}", CONF_BASE_PATH . "/{$public}");
     }
 }
