@@ -24,10 +24,18 @@ $styles = [
  */
 $scripts = [
     "resources/js/front/scripts.js" => "public/js/front/scripts.js",
+
     "resources/js/auth/scripts.js" => "public/js/auth/scripts.js",
+
     "resources/js/admin/scripts.js" => "public/js/admin/scripts.js",
+
     "node_modules/jquery/dist/jquery.js" => "public/js/jquery.js",
     "node_modules/bootstrap/dist/js/bootstrap.js" => "public/js/bootstrap.js",
+    "resources/js/global/plugins/backdrops.js" => "public/js/plugins/backdrops.js",
+    "resources/js/global/plugins/buttons.js" => "public/js/plugins/buttons.js",
+    "resources/js/global/plugins/form-errors.js" => "public/js/plugins/form-errors.js",
+    "resources/js/global/plugins/messages.js" => "public/js/plugins/messages.js",
+    "resources/js/global/scripts.js" => "public/js/scripts.js",
 ];
 
 $resources = $styles + $scripts;
