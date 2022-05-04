@@ -5,7 +5,9 @@
         <h1 class="title">Registro</h1>
     </div>
     <div class="auth-box-body">
-        <form action="<?= $router->route("auth.create") ?>" method="POST">
+        <form class="jsFormSubmit" action="<?= $router->route("auth.create") ?>" method="POST">
+            <div class="jsMessageArea"></div>
+
             <div class="form-row">
                 <div class="col-12 col-md-6">
                     <div class="form-group">

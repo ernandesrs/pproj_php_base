@@ -54,12 +54,15 @@
                                 </a>
                             <?php endif; ?>
 
-                            <button class="btn btn-outline-primary">
+                            <a class="btn btn-outline-primary" href="<?= $router->route("auth.logout") ?>">
                                 Sair
-                            </button>
+                            </a>
                         <?php else : ?>
                             <a class="btn btn-primary" href="<?= $router->route("auth.login") ?>" title="Acessar sua conta">
                                 Login
+                            </a>
+                            <a class="btn btn-outline-primary" href="<?= $router->route("auth.register") ?>" title="Crie sua conta">
+                                Registro
                             </a>
                         <?php endif; ?>
                     </div>

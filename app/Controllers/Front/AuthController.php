@@ -12,16 +12,6 @@ class AuthController extends FrontController
 {
     public function __construct(Router $router)
     {
-        if (session()->auth) {
-            $user = (new User())->findById(session()->auth);
-            if ($user) {
-                header("Location: " . $router->route("front.index"));
-                return;
-            }
-
-            session()->unset("auth");
-        }
-
         parent::__construct($router);
     }
 
@@ -30,6 +20,8 @@ class AuthController extends FrontController
      */
     public function login(): void
     {
+        $this->loggedRedirect();
+
         echo $this->template->render("auth/login", [
             "head" => $this->seo->render(CONF_APP_NAME . " | Login", "Página de login", null, null, false)
         ]);
@@ -86,6 +78,8 @@ class AuthController extends FrontController
      */
     public function register(): void
     {
+        $this->loggedRedirect();
+
         echo $this->template->render("auth/register", [
             "head" => $this->seo->render(CONF_APP_NAME . " | Registro", "Página de registro", null, null, false)
         ]);
@@ -112,6 +106,21 @@ class AuthController extends FrontController
         echo json_encode([
             "redirect" => $this->router->route("auth.login")
         ]);
+        return;
+    }
+
+    /**
+     * @return void
+     */
+    public function logout(): void
+    {
+        $auth = logged();
+        if ($auth) {
+            session()->unset("auth");
+        }
+
+        Alert::info("Pronto, agora você está deslogado.")->floating()->session();
+        redirect($this->router->route("auth.login"));
         return;
     }
 
@@ -172,12 +181,28 @@ class AuthController extends FrontController
 
         if (count($errs)) {
             echo json_encode([
-                "message" => "Alguns dados informados são inválidos.",
+                "message" => Alert::error("Alguns dados informados são inválidos.")->get(),
                 "errors" => $errs
             ]);
             die;
         }
 
         return $validated;
+    }
+
+    /**
+     * @return [type]
+     */
+    private function loggedRedirect()
+    {
+        if (session()->auth) {
+            $user = (new User())->findById(session()->auth);
+            if ($user) {
+                redirect($this->router->route("front.index"));
+                return;
+            }
+
+            session()->unset("auth");
+        }
     }
 }

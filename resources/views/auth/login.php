@@ -5,7 +5,9 @@
         <h1 class="title">Login</h1>
     </div>
     <div class="auth-box-body">
-        <form action="<?= $router->route("auth.authenticate") ?>" method="POST">
+        <form class="jsFormSubmit" action="<?= $router->route("auth.authenticate") ?>" method="POST">
+            <div class="jsMessageArea"></div>
+
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input class="form-control" type="email" name="email">

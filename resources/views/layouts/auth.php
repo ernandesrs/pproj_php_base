@@ -16,10 +16,25 @@
 
 <body>
     <main class="main">
+        <div class="container">
+            <div class="jsMessageArea">
+                <?= flash_alert() ?>
+            </div>
+        </div>
+
         <?= $this->section('content') ?>
     </main>
 
-    <?php foreach (["jquery", "bootstrap", "auth/scripts"] as $js) : ?>
+    <?php foreach ([
+        "jquery",
+        "jquery-ui",
+        "bootstrap",
+        "plugins/backdrops",
+        "plugins/buttons",
+        "plugins/form-errors",
+        "plugins/messages",
+        "scripts"
+    ] as $js) : ?>
         <script src="<?= CONF_APP_URL . "/public/js/{$js}" ?>.js"></script>
     <?php endforeach; ?>
     <?= $this->section('scripts') ?>
