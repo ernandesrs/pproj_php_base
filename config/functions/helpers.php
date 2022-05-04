@@ -1,6 +1,17 @@
 <?php
 
 /**
+ * @param string|null $url
+ * @return void
+ */
+function redirect(?string $url = null): void
+{
+    $url = $url ?? CONF_APP_URL;
+    header("Location: {$url}");
+    exit();
+}
+
+/**
  * Obtém sessão
  * @return \App\Core\Session
  */
