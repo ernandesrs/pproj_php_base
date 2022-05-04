@@ -4,6 +4,7 @@ namespace App\Controllers\Front;
 
 use App\Controllers\FrontController;
 use App\Core\Alert;
+use App\Core\Session;
 use App\Models\User;
 use CoffeeCode\Router\Router;
 
@@ -11,6 +12,16 @@ class AuthController extends FrontController
 {
     public function __construct(Router $router)
     {
+        if (session()->auth) {
+            $user = (new User())->findById(session()->auth);
+            if ($user) {
+                header("Location: " . $router->route("front.index"));
+                return;
+            }
+
+            session()->unset("auth");
+        }
+
         parent::__construct($router);
     }
 
@@ -29,9 +40,45 @@ class AuthController extends FrontController
      * @param array $data
      * @return void
      */
-    public function authenticate(array $data = []): void
+    public function authenticate(array $data): void
     {
-        var_dump($data);
+        $email = filter_var($data["email"] ?? "", FILTER_VALIDATE_EMAIL);
+        $password = filter_var($data["password"] ?? "", FILTER_SANITIZE_STRING);
+        if (!$email || !$password) {
+            echo json_encode([
+                "message" => Alert::error("Dados de login não informados.")->get(),
+                "errors" => [
+                    "email" => "Informe seu email",
+                    "password" => "Informe sua senha",
+                ]
+            ]);
+            return;
+        }
+
+        $user = (new User())->find("email=:email", "email={$email}");
+        if (!$user->count()) {
+            echo json_encode([
+                "message" => Alert::error("Email não encontrado ou não cadastrado.")->get()
+            ]);
+            return;
+        }
+
+        $user = $user->fetch();
+        if (!password_verify($password, $user->password)) {
+            echo json_encode([
+                "message" => Alert::error("Email e/ou senha inválido(s).")->get()
+            ]);
+            return;
+        }
+
+        $session = new Session();
+        $session->auth = $user->id;
+
+        Alert::success("Bem vindo {$user->first_name}, agora você está logado!")->session();
+        echo json_encode([
+            "redirect" => $this->router->route("front.index")
+        ]);
+        return;
     }
 
     /**

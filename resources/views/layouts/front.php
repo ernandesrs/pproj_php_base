@@ -15,6 +15,13 @@
 </head>
 
 <body>
+    <p class="bg-white">
+        <?php if (session()->auth) : ?>
+            Logado como: <?= (new \App\Models\User())->findById(session()->auth)->first_name ?>
+        <?php else : ?>
+            <a href="<?= $router->route("auth.login") ?>">Login</a>
+        <?php endif; ?>
+    </p>
     <?= $this->section('content') ?>
 
     <?php foreach (["jquery", "bootstrap", "front/scripts"] as $js) : ?>
