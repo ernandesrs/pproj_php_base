@@ -4,11 +4,11 @@ namespace App\Core;
 
 class Alert
 {
-    private const DEFAULT = "default";
-    private const SUCCESS = "success";
-    private const INFO = "info";
-    private const WARNING = "warning";
-    private const DANGER = "danger";
+    private const DEFAULT = "alert-secondary";
+    private const SUCCESS = "alert-success";
+    private const INFO = "alert-info";
+    private const WARNING = "alert-warning";
+    private const DANGER = "alert-danger";
 
     private const FIXED = "fixed";
     private const FLOATING = "floating";
