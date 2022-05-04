@@ -21,6 +21,8 @@ function flash_alert(): ?string
     /** @var \App\Core\Alert */
     $unserializedAlert = unserialize($alert);
 
+    session()->unset("alert");
+
     return $unserializedAlert->render();
 }
 
