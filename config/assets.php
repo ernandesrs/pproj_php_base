@@ -30,6 +30,7 @@ $scripts = [
     "resources/js/admin/scripts.js" => "public/js/admin/scripts.js",
 
     "node_modules/jquery/dist/jquery.js" => "public/js/jquery.js",
+    "node_modules/jquery-ui-dist/jquery-ui.js" => "public/js/jquery-ui.js",
     "node_modules/bootstrap/dist/js/bootstrap.js" => "public/js/bootstrap.js",
     "resources/js/global/plugins/backdrops.js" => "public/js/plugins/backdrops.js",
     "resources/js/global/plugins/buttons.js" => "public/js/plugins/buttons.js",

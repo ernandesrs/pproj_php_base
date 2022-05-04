@@ -8,6 +8,7 @@
 (function ($) {
     let alertModel = null;
     let alertHandler = null;
+    let timer = 7500;
 
     $.fn.errorMessage = function (message) {
         message = toObj(message);
@@ -55,18 +56,23 @@
 
     $.fn.addMessage = function (message) {
         let messageContainer = $(this);
-        alertModel = $("#models .alert").clone();
+        alertModel = $(`<div class="alert alert-dismissible">
+            <div class="alert-heading"></div>
+            <button type="button" class="close" data-dismiss="alert"><span>×</span></button>
+            <div class="alert-body"></div>
+        <div>`);
+
+        timer = message.type == "floating" ? message.time * 1000 : 0;
         alertModel.addClass(message.style);
 
-        if (message.fixed)
-            alertModel.addClass("fixed-alert");
+        alertModel.addClass(`alert-${message.type}`);
 
         if (message.title)
-            alertModel.find(".alert-heading").text(message.title);
+            alertModel.find(".alert-heading").html(message.title);
         else
             alertModel.find(".alert-heading").remove();
 
-        alertModel.find(".alert-message").text(message.message);
+        alertModel.find(".alert-body").text(message.message);
 
         messageContainer.html(alertModel);
 
@@ -82,10 +88,10 @@
 
         clearAlertHandler();
 
-        if (alertModel.hasClass("fixed-alert")) {
+        if (alertModel.hasClass("alert-floating")) {
             alertHandler = setTimeout(function () {
                 hideMessage(alertModel);
-            }, 7500);
+            }, timer);
         }
 
         alertModel.find(".jsBtnClose").on("click", function (e) {
@@ -97,12 +103,16 @@
     function hideMessage(alert) {
         clearAlertHandler();
 
-        if (alert.hasClass("fixed-alert")) {
+        if (alert.hasClass("alert-floating")) {
             alert.effect("bounce", "slow", function () {
-                $(this).hide("blind", "fast");
+                $(this).hide("blind", "fast", function () {
+                    $(this).remove();
+                });
             });
         } else {
-            alert.hide("blind", "fast");
+            alert.hide("blind", "fast", function () {
+                $(this).remove();
+            });
         }
     }
 
@@ -118,7 +128,7 @@
             return {
                 "title": null,
                 "message": param,
-                "fixed": false,
+                "type": "fixed",
             };
         }
     }

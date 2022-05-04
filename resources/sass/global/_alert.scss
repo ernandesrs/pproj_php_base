@@ -1,0 +1,17 @@
+.alert {
+    border-bottom-width: 6px;
+    box-shadow: $box-shadow-sm;
+
+    &.alert-floating {
+        width: 100%;
+        max-width: 375px;
+        position: fixed;
+        top: 75px;
+        right: 12px;
+        z-index: 999;
+    }
+
+    &.alert-floating, &.alert-fixed {
+        display: none;
+    }
+}

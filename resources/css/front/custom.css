@@ -8610,6 +8610,22 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.alert {
+  border-bottom-width: 6px;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+.alert.alert-floating {
+  width: 100%;
+  max-width: 375px;
+  position: fixed;
+  top: 75px;
+  right: 12px;
+  z-index: 999;
+}
+.alert.alert-floating, .alert.alert-fixed {
+  display: none;
+}
+
 body {
   width: 100%;
   min-height: 100vh;

@@ -10,6 +10,7 @@
     <?php foreach (["front/custom"] as $css) : ?>
         <link rel="stylesheet" href="<?= CONF_APP_URL . "/public/css/{$css}" ?>.css">
     <?php endforeach; ?>
+    <link rel="shortcut icon" href="<?= CONF_APP_URL ?>/public/favicon.ico" type="image/x-icon">
 
     <?= $this->section('styles') ?>
 </head>
@@ -85,7 +86,17 @@
         </div>
     </footer>
 
-    <?php foreach (["jquery", "bootstrap", "front/scripts"] as $js) : ?>
+    <?php foreach ([
+        "jquery",
+        "jquery-ui",
+        "bootstrap",
+        "plugins/backdrops",
+        "plugins/buttons",
+        "plugins/form-errors",
+        "plugins/messages",
+        "scripts",
+        "front/scripts"
+    ] as $js) : ?>
         <script src="<?= CONF_APP_URL . "/public/js/{$js}" ?>.js"></script>
     <?php endforeach; ?>
     <?= $this->section('scripts') ?>

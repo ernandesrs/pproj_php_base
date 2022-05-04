@@ -1,10 +1,12 @@
 $(function () {
-    let alerts = $(document).find(".message-area .jsAlert");
+    let alerts = $(document).find(".jsMessageArea .alert");
 
     if (alerts.length) {
         $(alerts[0]).showMessage();
     }
+});
 
+$(function () {
     $(document).on("submit", ".jsFormSubmit", function (e) {
         e.preventDefault();
         let form = $(this);
@@ -48,22 +50,6 @@ $(function () {
             messageArea.errorMessage(response.message);
             if (response.errors)
                 form.addErrors(response.errors, true);
-        });
-    });
-
-    $(".jsButtonConfirm").on("click", function (e) {
-        e.preventDefault();
-        let modal = $("#models .jsConfirmationModal").clone();
-        modal.addClass($(this).attr("data-type"));
-        modal.find(".modal-title").html($(this).attr("data-title"));
-        modal.find(".modal-text").html($(this).attr("data-message"));
-        modal.find(".jsFormSubmit").attr("action", $(this).attr("data-action"));
-        modal.find(".jsFormSubmit").addClass("jsFormSubmit");
-
-        $("body").append(modal.modal());
-
-        $(".jsConfirmationModal").on("hidden.bs.modal", function () {
-            $(this).remove();
         });
     });
 });
