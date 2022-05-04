@@ -23,3 +23,14 @@ function flash_alert(): ?string
 
     return $unserializedAlert->render();
 }
+
+/**
+ * @return \App\Models\User|null
+ */
+function logged(): ?\App\Models\User
+{
+    if ($id = session()->auth)
+        return (new \App\Models\User())->findById($id);
+
+    return null;
+}
