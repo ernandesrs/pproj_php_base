@@ -10,6 +10,7 @@ $router = (new \CoffeeCode\Router\Router(CONF_APP_URL, "@"));
 $router->namespace("\\App\\Controllers\\Front");
 $router->group("/");
 $router->get("/", "IndexController@index", "front.index");
+$router->get("/sobre", "IndexController@about", "front.about");
 
 // auth
 $router->get("/login", "AuthController@login", "auth.login");

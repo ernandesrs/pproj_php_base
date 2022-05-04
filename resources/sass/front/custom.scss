@@ -4,6 +4,31 @@
 
 body {
     width: 100%;
-    min-height: 100%;
-    background-color: $primary;
+    min-height: 100vh;
+    background-color: $light;
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    overflow: hidden;
+
+    .header {
+        display: flex;
+        align-items: center;
+        background-color: transparent;
+        height: 75px;
+        border-bottom: 1px solid $light;
+    }
+
+    .main {
+        height: calc(100vh - (75px + 50px));
+    }
+
+    .footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $dark;
+        height: 50px;
+        color: $light;
+        font-size: 0.785rem;
+    }
 }

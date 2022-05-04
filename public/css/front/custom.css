@@ -8612,8 +8612,30 @@ h3 {
 }
 body {
   width: 100%;
-  min-height: 100%;
-  background-color: #007bff;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  overflow: hidden;
+}
+body .header {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  height: 75px;
+  border-bottom: 1px solid #f8f9fa;
+}
+body .main {
+  height: calc(100vh - 125px);
+}
+body .footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #343a40;
+  height: 50px;
+  color: #f8f9fa;
+  font-size: 0.785rem;
 }
 
 /*# sourceMappingURL=custom.css.map */

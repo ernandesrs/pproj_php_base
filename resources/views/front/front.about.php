@@ -3,7 +3,7 @@
 <div class="h-100 d-flex align-items-center">
     <div class="container">
         <h1 class="text-center">
-            <strong><?= CONF_APP_NAME ?></strong> FRONT | PÁGINA INICIAL
+            <strong><?= CONF_APP_NAME ?></strong> FRONT | SOBRE
         </h1>
         <div class="row justify-content-center">
             <div class="col-12 col-md-10 col-lg-8">
