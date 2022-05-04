@@ -38,6 +38,11 @@
                                 Sobre
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= $router->route("front.test") ?>">
+                                Testes
+                            </a>
+                        </li>
                     </ul>
 
                     <div class="ml-3 account">
