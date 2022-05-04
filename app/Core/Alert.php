@@ -154,7 +154,7 @@ class Alert
         $alertHeading = empty($this->title) ? null : "<div class='alert-heading'>{$this->title}</div>";
         $time = $this->type == self::FLOATING ? " data-time='{$this->time}'" : null;
         $alert = "
-            <div class='alert alert-{$this->style} alert-dismissible alert-{$this->type}'{$time}>
+            <div class='alert {$this->style} alert-dismissible alert-{$this->type}'{$time}>
                 {$alertHeading}
                 <button type='button' class='close' data-dismiss='alert'>
                     <span>&times;</span>
