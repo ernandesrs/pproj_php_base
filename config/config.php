@@ -28,6 +28,22 @@ define("CONF_APP_NAME", $env["APP_NAME"]);
 define("CONF_APP_URL", $env["APP_URL"]);
 define("CONF_APP_LOCAL", $env["APP_LOCAL"]);
 
+define("CONF_MAIL_HOST", $env["MAIL_HOST"]);
+define("CONF_MAIL_USERNAME", $env["MAIL_USERNAME"]);
+define("CONF_MAIL_PASSWORD", $env["MAIL_PASSWORD"]);
+define("CONF_MAIL_SMTP_AUTH", $env["MAIL_SMTP_AUTH"]);
+define("CONF_MAIL_ENCRYPTION", $env["MAIL_ENCRYPTION"]);
+define("CONF_MAIL_PORT", $env["MAIL_PORT"]);
+define("CONF_MAIL_FROM_NAME", $env["MAIL_FROM_NAME"]);
+define("CONF_MAIL_FROM_ADDRESS", $env["MAIL_FROM_ADDRESS"]);
+define("CONF_MAIL_SMTP_OPTIONS", [
+    'ssl' => [
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+        'allow_self_signed' => true
+    ]
+]);
+
 define("CONF_VIEWS_DIR", "/resources/views");
 define("CONF_UPLOADS_DIR", "/storage/uploads");
 define("CONF_CACHE_DIR", "/storage/cache");
