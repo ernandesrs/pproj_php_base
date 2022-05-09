@@ -94,8 +94,26 @@ class TestController extends FrontController
             return;
         }
 
+        if (!empty($_FILES["attach"])) {
+            $file = $_FILES["attach"];
+
+            $validMimeTypes = ["image/png", "image/jpg"];
+            if (!in_array($file["type"], $validMimeTypes)) {
+                echo json_encode([
+                    "success" => false,
+                    "message" => Alert::error("Tipo de anexo não aceito. Anexar apenas: " . implode(",", $validMimeTypes))->get()
+                ]);
+                return;
+            }
+        }
+
         $mail = (new Mail($_POST["subject"], $_POST["message"]))
             ->addRecipient($_POST["to"]);
+
+        if ($file ?? null) {
+            $mail->addAttachment($file["tmp_name"], $file["name"]);
+        }
+
         if (!$mail->send()) {
             echo json_encode([
                 "success" => false,

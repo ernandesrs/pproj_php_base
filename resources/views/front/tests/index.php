@@ -45,6 +45,11 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="attach">Anexo:</label>
+                        <input type="file" name="attach" id="attach" class="form-control">
+                    </div>
+
+                    <div class="form-group">
                         <label for="subject">Assunto:</label>
                         <textarea name="subject" id="subject" class="form-control"></textarea>
                     </div>
