@@ -27,10 +27,8 @@ class Mail
             // Server settings
             if (CONF_APP_LOCAL) {
                 $this->engine->SMTPOptions = CONF_MAIL_SMTP_OPTIONS;
-                $this->engine->SMTPDebug = SMTP::DEBUG_SERVER;
-            } else {
-                $this->engine->SMTPDebug = SMTP::DEBUG_OFF;
             }
+            $this->engine->SMTPDebug = SMTP::DEBUG_OFF;
 
             $this->engine->isSMTP(); // Send using SMTP
             $this->engine->CharSet = "utf-8";
@@ -123,5 +121,14 @@ class Mail
     public function error(): ?string
     {
         return empty($this->errorInfo) ? $this->errorInfo : $this->engine->ErrorInfo;
+    }
+
+    /**
+     * @return Mail
+     */
+    public function debug(): Mail
+    {
+        $this->engine->SMTPDebug = SMTP::DEBUG_SERVER;
+        return $this;
     }
 }
