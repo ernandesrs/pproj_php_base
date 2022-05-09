@@ -4,6 +4,7 @@ namespace App\Controllers\Front;
 
 use App\Controllers\FrontController;
 use App\Core\Alert;
+use App\Core\Mail;
 use CoffeeCode\Router\Router;
 
 class TestController extends FrontController
@@ -77,6 +78,36 @@ class TestController extends FrontController
 
     public function send_mail()
     {
-        var_dump($_POST);
+        if (empty($_POST["subject"]) || empty($_POST["message"]) || empty($_POST["to"])) {
+            echo json_encode([
+                "success" => false,
+                "message" => Alert::error("Informe todos os campos!")->get()
+            ]);
+            return;
+        }
+
+        if (!filter_var($_POST["to"], FILTER_VALIDATE_EMAIL)) {
+            echo json_encode([
+                "success" => false,
+                "message" => Alert::error("Informe um email válido!")->get()
+            ]);
+            return;
+        }
+
+        $mail = (new Mail($_POST["subject"], $_POST["message"]))
+            ->addRecipient($_POST["to"]);
+        if (!$mail->send()) {
+            echo json_encode([
+                "success" => false,
+                "message" => Alert::error("Falha ao enviar mensagem!")->get()
+            ]);
+            return;
+        }
+
+        echo json_encode([
+            "success" => true,
+            "message" => Alert::success("Mensagem enviada para " . $_POST['to'] . "!")->get()
+        ]);
+        return;
     }
 }

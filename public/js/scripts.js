@@ -32,8 +32,8 @@ $(function () {
             if (response.message)
                 messageArea.addMessage(response.message);
 
-                form.removeErrors();
             if (response.success) {
+                form.removeErrors();
             } else if (response.errors) {
                 form.addErrors(response.errors);
             }
@@ -66,7 +66,7 @@ function ajaxRequest(url, data = null, before = null, success = null, complete =
         dataType: "json",
         contentType: false,
         processData: false,
-        timeout: 5000,
+        timeout: 10000,
 
         beforeSend: function () {
             if (before) {
