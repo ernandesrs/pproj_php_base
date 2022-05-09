@@ -8626,13 +8626,17 @@ h3 {
   display: none;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 body {
   width: 100%;
   min-height: 100vh;
   background-color: #f8f9fa;
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
-  overflow: hidden;
 }
 body .header {
   display: flex;
@@ -8642,7 +8646,7 @@ body .header {
   border-bottom: 1px solid #f8f9fa;
 }
 body .main {
-  height: calc(100vh - 125px);
+  min-height: calc(100vh - 125px);
 }
 body .footer {
   display: flex;

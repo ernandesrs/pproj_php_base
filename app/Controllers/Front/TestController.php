@@ -27,7 +27,7 @@ class TestController extends FrontController
         }
 
         echo $this->template->render("front/tests/index", [
-            "head" => $this->seo->render("Testes", "Página de testes", "", "", false)
+            "head" => $this->seo->render("Testes | " . CONF_APP_NAME, "Página de testes", "", "", false)
         ]);
         return;
     }
@@ -63,7 +63,7 @@ class TestController extends FrontController
 
     public function form_errors()
     {
-        sleep(5);
+        sleep(4);
         echo json_encode([
             "success" => false,
             "message" => Alert::error("Erro ao validar dados")->get(),
@@ -73,5 +73,10 @@ class TestController extends FrontController
             ],
         ]);
         return;
+    }
+
+    public function send_mail()
+    {
+        var_dump($_POST);
     }
 }

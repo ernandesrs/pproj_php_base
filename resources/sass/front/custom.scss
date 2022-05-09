@@ -4,13 +4,17 @@
 
 @import "./../global/alert";
 
+html,
+body {
+    overflow-x: hidden;
+}
+
 body {
     width: 100%;
     min-height: 100vh;
     background-color: $light;
     font-family: "Roboto", sans-serif;
     font-size: 1rem;
-    overflow: hidden;
 
     .header {
         display: flex;
@@ -21,7 +25,7 @@ body {
     }
 
     .main {
-        height: calc(100vh - (75px + 50px));
+        min-height: calc(100vh - (75px + 50px));
     }
 
     .footer {

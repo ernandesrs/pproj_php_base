@@ -12,6 +12,9 @@
             </div>
 
             <div class="col-12 py-5">
+                <h1 class="border-bottom pb-3">
+                    Teste de erros no formulário
+                </h1>
                 <form class="jsFormSubmit" action="<?= $router->route("front.testPost", ["test" => "form_errors"]) ?>" method="post">
                     <div class="jsMessageArea"></div>
 
@@ -26,6 +29,32 @@
                     </div>
 
                     <button class="btn btn-primary">Testar erros</button>
+                </form>
+            </div>
+
+            <div class="col-12 py-5">
+                <h1 class="border-bottom pb-3">
+                    Teste de envio de email
+                </h1>
+                <form class="jsFormSubmit" action="<?= $router->route("front.testPost", ["test" => "send_mail"]) ?>" method="post">
+                    <div class="jsMessageArea"></div>
+
+                    <div class="form-group">
+                        <label for="to">Para:</label>
+                        <input type="email" name="to" id="to" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Assunto:</label>
+                        <textarea name="subject" id="subject" class="form-control"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Mensagem:</label>
+                        <textarea name="message" id="message" class="form-control"></textarea>
+                    </div>
+
+                    <button class="btn btn-primary">Enviar email</button>
                 </form>
             </div>
         </div>
