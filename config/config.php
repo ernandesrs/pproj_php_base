@@ -47,3 +47,4 @@ define("CONF_MAIL_SMTP_OPTIONS", [
 define("CONF_VIEWS_DIR", "/resources/views");
 define("CONF_UPLOADS_DIR", "/storage/uploads");
 define("CONF_CACHE_DIR", "/storage/cache");
+define("CONF_LOGS_DIR", "/storage/logs");
