@@ -94,7 +94,7 @@ class TestController extends FrontController
             return;
         }
 
-        if (!empty($_FILES["attach"])) {
+        if (!empty($_FILES["attach"]["name"])) {
             $file = $_FILES["attach"];
 
             $validMimeTypes = ["image/png", "image/jpg"];
