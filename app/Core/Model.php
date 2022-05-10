@@ -16,4 +16,9 @@ class Model extends DataLayer
     {
         parent::__construct($table, $required, $primary, $timestamps);
     }
+
+    public function __get($name)
+    {
+        return $this->data->$name ?? null;
+    }
 }
